@@ -40,11 +40,10 @@ fn get_homophones(word: &str) -> Option<Vec<String>> {
             reqwest::blocking::get(&url).expect("Waited to scrape again, but still failed")
         }
     };
-    // println!(
-    //     "Resp status is: {:?}",
-    //     resp.status().canonical_reason().unwrap()
-    // );
-    assert!(resp.status().is_success());
+    // assert!(resp.status().is_success());
+    if !resp.status().is_success() {
+        return None;
+    }
 
     let html = resp.text().unwrap();
     let fragment = Html::parse_fragment(&html);
