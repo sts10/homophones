@@ -10,12 +10,23 @@ fn main() {
     let input =
         PathBuf::from("/home/sschlinkert/code/common_word_list_maker/example_word_list.txt");
     let words = make_vec_from_filenames(&[input]);
-    for word in words {
-        println!("{} {:?}", word, get_homophones(&word));
-    }
+    write_tuples_to_file(make_pairs_of_homophones(words));
 }
 
-fn get_homophones(word: &str) -> Vec<String> {
+fn make_pairs_of_homophones(input_words: Vec<String>) -> Vec<(String, String)> {
+    let mut lines_to_print = vec![];
+    for word in input_words {
+        if let Some(list_of_homophones) = get_homophones(&word) {
+            println!("{} {:?}", word, list_of_homophones);
+            for homophone in list_of_homophones {
+                lines_to_print.push((word.clone(), homophone));
+            }
+        }
+    }
+    lines_to_print
+}
+
+fn get_homophones(word: &str) -> Option<Vec<String>> {
     let url = "https://en.wiktionary.org/wiki/".to_owned() + word;
     let resp = reqwest::blocking::get(&url).unwrap();
     // println!(
@@ -33,7 +44,11 @@ fn get_homophones(word: &str) -> Vec<String> {
     for element in fragment.select(&homophones_html) {
         homophones.push(element.inner_html());
     }
-    homophones
+    if homophones.is_empty() {
+        return None;
+    } else {
+        Some(homophones)
+    }
 }
 
 /// Takes a slice of `PathBuf`s representing the word list(s)
@@ -65,7 +80,16 @@ pub fn make_vec_from_filenames(filenames: &[PathBuf]) -> Vec<String> {
     word_list
 }
 
-fn write_vec_to_file(vec: Vec<String>) {
+fn write_tuples_to_file(vec: Vec<(String, String)>) {
+    let output = "homophones.txt";
+    let mut f = File::create(output).expect("Unable to create file");
+    for tuple in vec {
+        println!("Writing {} and {} to file", tuple.0, tuple.1);
+        writeln!(f, "{}, {}", tuple.0, tuple.1).expect("Unable to write word to file");
+    }
+}
+
+fn _write_vec_to_file(vec: Vec<String>) {
     let output = "homophones.txt";
     let mut f = File::create(output).expect("Unable to create file");
     for string in vec {
