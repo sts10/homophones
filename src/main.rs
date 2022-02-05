@@ -4,6 +4,7 @@ use std::io::BufRead;
 use std::io::BufReader;
 use std::io::Write;
 use std::path::PathBuf;
+use std::{thread, time};
 
 fn main() {
     // let words = ["sun", "there"];
@@ -28,7 +29,18 @@ fn make_pairs_of_homophones(input_words: Vec<String>) -> Vec<(String, String)> {
 
 fn get_homophones(word: &str) -> Option<Vec<String>> {
     let url = "https://en.wiktionary.org/wiki/".to_owned() + word;
-    let resp = reqwest::blocking::get(&url).unwrap();
+    let resp = match reqwest::blocking::get(&url) {
+        Ok(r) => r,
+        Err(e) => {
+            let seconds_to_wait = 6;
+            eprintln!(
+                "Error scraping word '{}': {}\nWaiting {} seconds and then will try again",
+                word, e, seconds_to_wait
+            );
+            thread::sleep(time::Duration::from_secs(seconds_to_wait));
+            reqwest::blocking::get(&url).expect("Waited to scrape again, but still failed")
+        }
+    };
     // println!(
     //     "Resp status is: {:?}",
     //     resp.status().canonical_reason().unwrap()
@@ -85,7 +97,7 @@ fn write_tuples_to_file(vec: Vec<(String, String)>) {
     let mut f = File::create(output).expect("Unable to create file");
     for tuple in vec {
         println!("Writing {} and {} to file", tuple.0, tuple.1);
-        writeln!(f, "{}, {}", tuple.0, tuple.1).expect("Unable to write word to file");
+        writeln!(f, "{},{}", tuple.0, tuple.1).expect("Unable to write word to file");
     }
 }
 
