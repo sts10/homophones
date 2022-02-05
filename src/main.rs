@@ -8,8 +8,7 @@ use std::{thread, time};
 
 fn main() {
     // let words = ["sun", "there"];
-    let input =
-        PathBuf::from("/home/sschlinkert/code/common_word_list_maker/example_word_list.txt");
+    let input = PathBuf::from("input_list.txt");
     let words = make_vec_from_filenames(&[input]);
     write_tuples_to_file(make_pairs_of_homophones(words));
 }
