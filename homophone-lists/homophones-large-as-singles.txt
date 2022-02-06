@@ -1373,7 +1373,9 @@ bury
 berry
 Barry
 berry
-Mary–marry–merry merger
+Mary
+marry
+merry 
 berth
 birth
 bes
@@ -1717,7 +1719,8 @@ bourne
 born
 Bourne
 born
-horse-hoarse merger
+horse
+hoarse
 born
 bawn
 born
@@ -2121,7 +2124,8 @@ calque
 call
 coll
 call
-cot-caught merger
+cot
+caught
 caller
 collar
 callous
@@ -2415,7 +2419,8 @@ calda
 caudal
 coddle
 caudal
-cot-caught merger
+cot
+caught
 caudal
 caudle
 caudate
@@ -2427,7 +2432,8 @@ cot
 caught
 court
 caught
-horse-hoarse merger
+horse
+hoarse
 caulk
 cock
 caulk
@@ -2915,7 +2921,8 @@ cord
 chord
 cored
 chord
-horse-hoarse merger
+horse
+hoarse
 chords
 cords
 chou
@@ -3197,7 +3204,8 @@ kohls
 coll
 call
 coll
-cot-caught merger
+cot
+caught
 collaboration
 collaborations
 collaborations
@@ -3599,7 +3607,8 @@ corps
 cor
 core
 cor
-horse-hoarse merger
+horse
+hoarse
 cor
 corps
 coral
@@ -3609,7 +3618,8 @@ chord
 cord
 cored
 cord
-horse-hoarse merger
+horse
+hoarse
 cord
 cawed
 cord
@@ -4047,7 +4057,8 @@ darter
 data
 daughter
 data
-cot–caught merger
+cot
+caught 
 dates
 date
 dates
@@ -4401,7 +4412,8 @@ Don
 don
 dawn
 don
-cot-caught merger
+cot
+caught
 don
 dom
 don
@@ -5579,9 +5591,10 @@ FTSE
 footsie
 Footsie
 for
-  fore
+fore
 for
-  horse-hoarse merger
+horse
+hoarse
 for
   four
 force
@@ -6183,7 +6196,8 @@ GOBLin
 god
 gaud
 god
-cot-caught merger
+cot
+caught
 goda
 gouda
 gofer
@@ -6207,7 +6221,8 @@ gaud
 gored
 non-rhotic
 gored
-horse-hoarse merger
+horse
+hoarse
 gorge
 gorg
 gorilla
@@ -7025,7 +7040,8 @@ horrifient
 horse
 hoarse
 horse
-horse-hoarse merger
+horse
+hoarse
 horta
 Horta
 hose
@@ -7693,13 +7709,15 @@ not
 knot
 naught
 knot
-cot-caught merger
+cot
+caught
 knots
 nots
 knots
 naughts
 knots
-cot-caught merger
+cot
+caught
 knotty
 naughty
 know
@@ -8235,7 +8253,8 @@ lynx
 lint
 Lent
 lint
-pin-pen merger
+pin
+pen
 lion
 Lyon
 liquor
@@ -9413,11 +9432,13 @@ Moore
 moor
 more
 moor
-cure–force merger
+cure
+force
 moor
 maw
 moor
-cure–force merger
+cure
+force
 moor
 mooer
 moose
@@ -9453,7 +9474,8 @@ more
 morn
 mourn
 morn
-horse-hoarse merger
+horse
+hoarse
 morn
 mourne
 morn
@@ -9501,7 +9523,8 @@ morning
 mourning
 moaning
 mourning
-dough–door merger
+dough
+door
 moussa
 moussas
 moussa
@@ -10037,7 +10060,8 @@ wee
 oui
 whee
 oui
-wine-whine merger
+wine
+whine
 oui
 Wii
 oui
@@ -10141,7 +10165,8 @@ paw
 pah
 cot-caught
 pah
-father-bother mergers
+father
+bother
 pai
 Pai
 paid
@@ -10275,7 +10300,8 @@ paw
 par
 cot-caught
 par
-father-bother mergers
+father
+bother
 par
 pars
 par
@@ -10441,25 +10467,30 @@ poor
 paw
 non-rhotic
 paw
-cure-force merger
+cure
+force
 paw
 pore
 paw
 pour
 paw
-horse-hoarse merger
+horse
+hoarse
 paw
 par
 paw
-cot-caught
+cot
+caught
 paw
-father-bother mergers
+father
+bother
 paw
 pa
 paw
 cot-caught
 paw
-father-bother mergers
+father
+bother
 pawed
 pod
 pawl
@@ -12759,7 +12790,8 @@ seitanic
 satay
 sauté
 satay
-cot–caught merger
+cot
+caught
 sats
 satts
 satyr
@@ -12773,13 +12805,15 @@ savna
 sawed
 sod
 sawed
-cot-caught merger
+cot
+caught
 sawed
 sword
 sawed
 non-rhotic
 sawed
-horse-hoarse merger
+horse
+hoarse
 sawyer
 soya
 sax
@@ -13533,7 +13567,7 @@ sore
 soar
 saw
 soar
-horse–hoarse merger
+horse–hoarse
 soar
 sower
 soar
@@ -14079,17 +14113,20 @@ Shaw
 sure
 non-rhotic
 sure
-horse-hoarse merger
+horse
+hoarse
 sure
 shore
 sure
-cure-force merger
+cure
+force
 sure
 show
 sure
 non-rhotic
 sure
-dough-door merger
+dough
+door
 surely
 Shirley
 surf
@@ -14502,7 +14539,8 @@ tint
 tent
 tint
 tent
-pin-pen merger
+pin
+pen
 tents
 tints
 terminal
@@ -14704,7 +14742,8 @@ th-stopping
 tin
 ten
 tin
-pin-pen merger
+pin
+pen
 tinder
 tender
 tine
@@ -14724,7 +14763,8 @@ tînt
 tint
 tent
 tint
-pin-pen merger
+pin
+pen
 tio
 til
 tip
@@ -14840,13 +14880,15 @@ taupe
 tor
 tore
 tor
-horse-hoarse merger
+horse
+hoarse
 tor
 torr
 tor
 tour
 tor
-pour-poor merger
+pour
+poor
 tor
 taw
 tor
@@ -16048,7 +16090,8 @@ war
 wax
 whacks
 wax
-wine-whine merger
+wine
+whine
 wax
 wacks
 way
@@ -16082,7 +16125,8 @@ we're
 wear
 where
 wear
-wine-whine merger
+wine
+whine
 wear
 were
 wearing
@@ -16110,7 +16154,8 @@ we
 wee
 whee
 wee
-wine-whine merger
+wine
+whine
 wee
 Wii
 weed
@@ -16182,7 +16227,8 @@ weather
 wether
 whether
 wether
-wine-whine merger
+wine
+whine
 wetted
 whetted
 wetting
@@ -16320,7 +16366,8 @@ wite
 whither
 wither
 whither
-wine-whine merger
+wine
+whine
 whoa
 woe
 whole
@@ -16462,7 +16509,8 @@ Whittier
 woe
 whoa
 woe
-wine-whine merger
+wine
+whine
 wok
 walk
 wole
