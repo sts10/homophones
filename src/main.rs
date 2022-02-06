@@ -31,7 +31,7 @@ fn get_homophones(word: &str) -> Option<Vec<String>> {
     let resp = match reqwest::blocking::get(&url) {
         Ok(r) => r,
         Err(e) => {
-            let seconds_to_wait = 6;
+            let seconds_to_wait = 20;
             eprintln!(
                 "Error scraping word '{}': {}\nWaiting {} seconds and then will try again",
                 word, e, seconds_to_wait
