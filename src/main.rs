@@ -52,7 +52,7 @@ fn get_homophones(word: &str) -> Option<Vec<String>> {
     let mut homophones: Vec<String> = vec![];
 
     for element in fragment.select(&homophones_html) {
-        homophones.push(element.inner_html());
+        homophones.push(element.inner_html().trim().to_string());
     }
     if homophones.is_empty() {
         return None;
