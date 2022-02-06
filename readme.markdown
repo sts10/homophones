@@ -25,7 +25,7 @@ adds
 adze
 ```
 
-Any lists with "cleaned" in the file name have been cleaned in someway, likely de-duplicated, sorted, and trimmed for whitespace.
+Any lists with "cleaned" in the file name have been cleaned in some way, likely trimmed of whitespace, de-duplicated, and sorted alphabetically. I'd recommend using cleaned files over singles.
 
 ## Making your own list of homophones
 
