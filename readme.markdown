@@ -2,7 +2,13 @@
 
 A Rust tool that makes a list of homophones from [Wikitionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page).
 
+
 ## What's in this project
+
+- Some lists of homophones
+- A Rust command-line tool to generate your own list of homophones, based on an inputted word list. 
+
+## Lists of homophones
 
 If you're looking for lists of homophones, look in the `homophone-lists` directory.
 
@@ -29,9 +35,48 @@ Any lists with "cleaned" in the file name have been cleaned in some way, likely 
 
 ## Making your own list of homophones
 
-If you wish, you can edit the `input_list.txt` file and then run the scraping Rust script again by running `cargo run --release` (Rust will need to be installed). The script will search Wikitionary for each word in the input_list file, searching for homophones. 
+To make your own list of homophones, you'll want to use the Rust command-line tool. 
 
-By default, it will write the file as homophone pairs, separated by commas (see above).
+### How it works
+
+The Rust command-line tool will search and scrape Wikitionary for each word in the inputted word list file(s), searching for homophones. 
+
+### Installation
+
+1. [Install Rust](https://www.rust-lang.org/tools/install) if you haven't already
+2. Run: `cargo install --git https://github.com/sts10/homophones --branch main`
+
+### Usage 
+
+```txt
+homophones 0.1.2
+Generate lists of homophones
+
+USAGE:
+    homophones [OPTIONS] <Inputted Word Lists>...
+
+ARGS:
+    <Inputted Word Lists>...    Word list input files. Can be more than one
+
+OPTIONS:
+    -f, --force                       Force overwrite of output file if it exists
+    -h, --help                        Print help information
+    -p, --pairs <PAIRS_OUTPUT>        Path for outputted file for list of PAIRS of homohpones
+    -s, --singles <SINGLES_OUTPUT>    Path for outputted file for list of SINGLE homohpones
+    -V, --version                     Print version information
+
+```
+
+### Examples
+
+Take words from a file called `input_list.txt` and print a list of homophones, one per line, to a new file called `some_homophones_as_a_single_list.txt`:
+`homophones -s some_homophones_as_a_single_list.txt input_list.txt` 
+
+Take words from a file called `input_list.txt` and print a list of homophones, a pair of homophones per line, to a new file called `some_homophones_as_pairs_list.txt`:
+`homophones -p some_homophones_as_pairs_list.txt input_list.txt`
+
+Do both of those things at once!
+`homophones -s some_homophones_as_a_single_list.txt -p some_homophones_as_pairs_list.txt input_list.txt`
 
 ## To do
 
