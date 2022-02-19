@@ -1,4 +1,5 @@
 use clap::Parser;
+// use futures::future::join_all;
 use scraper::{Html, Selector};
 use std::fs::File;
 use std::io::BufRead;
@@ -29,23 +30,31 @@ struct Args {
     inputted_word_lists: Vec<PathBuf>,
 }
 
-fn main() {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     if !validate(&args) {
-        return;
+        return Ok(()); // sorry
     }
 
     let words = make_vec_from_filenames(&args.inputted_word_lists);
 
     // This make_pairs_of_homophones does the actual web-scraping
     // so we only want to run it once
-    let pairs_of_homophones = make_pairs_of_homophones(&words);
+    // let pairs_of_homophones = make_pairs_of_homophones(&words);
+
+    // let futures: Vec<_> = words.iter().map(make_pairs_of_homophones).collect();
+    // let pairs_of_homophones = join_all(futures);
+    // pairs_of_homophones.await;
+    let pairs_of_homophones = make_pairs_of_homophones(&words).await;
+
     if let Some(ref pairs_output) = args.pairs_output {
         write_tuples_to_file(&pairs_of_homophones, pairs_output);
     }
     if let Some(ref singles_output) = args.singles_output {
         write_vec_to_file(singularize(&pairs_of_homophones), singles_output);
     }
+    Ok(())
 }
 
 fn validate(args: &Args) -> bool {
@@ -93,10 +102,10 @@ fn singularize(pairs_of_homophones: &[(String, String)]) -> Vec<String> {
     sort_and_dedup(&mut homophones)
 }
 
-fn make_pairs_of_homophones(input_words: &[String]) -> Vec<(String, String)> {
+async fn make_pairs_of_homophones(input_words: &[String]) -> Vec<(String, String)> {
     let mut tuples_of_homophones = vec![];
     for word in input_words {
-        if let Some(list_of_homophones) = get_homophones(word) {
+        if let Some(list_of_homophones) = get_homophones(word).await {
             for homophone in list_of_homophones {
                 tuples_of_homophones.push((word.clone(), homophone));
             }
@@ -105,9 +114,9 @@ fn make_pairs_of_homophones(input_words: &[String]) -> Vec<(String, String)> {
     tuples_of_homophones
 }
 
-fn get_homophones(word: &str) -> Option<Vec<String>> {
+async fn get_homophones(word: &str) -> Option<Vec<String>> {
     let url = "https://en.wiktionary.org/wiki/".to_owned() + word;
-    let resp = match reqwest::blocking::get(&url) {
+    let resp = match reqwest::get(&url).await {
         Ok(r) => r,
         Err(e) => {
             let seconds_to_wait = 20;
@@ -116,14 +125,16 @@ fn get_homophones(word: &str) -> Option<Vec<String>> {
                 word, e, seconds_to_wait
             );
             thread::sleep(time::Duration::from_secs(seconds_to_wait));
-            reqwest::blocking::get(&url).expect("Waited to scrape again, but still failed")
+            reqwest::get(&url)
+                .await
+                .expect("Waited to scrape again, but still failed")
         }
     };
     if !resp.status().is_success() {
         return None;
     }
 
-    let html = resp.text().unwrap();
+    let html = resp.text().await.unwrap();
     let fragment = Html::parse_fragment(&html);
     let homophones_html = Selector::parse("span.homophones span a").unwrap();
     // Definitely a way to do this with `map` or something similar...
