@@ -7,23 +7,39 @@ use std::path::PathBuf;
 use std::{thread, time};
 
 fn main() {
-    // let words = ["sun", "there"];
-    let input = PathBuf::from("input_list.txt");
-    let words = make_vec_from_filenames(&[input]);
-    write_tuples_to_file(make_pairs_of_homophones(words));
+    let words = [
+        "sun".to_string(),
+        "there".to_string(),
+        "marvelous".to_string(),
+    ];
+    // let input = PathBuf::from("input_list.txt");
+    // let words = make_vec_from_filenames(&[input]);
+
+    let pairs_of_homophones = make_pairs_of_homophones(&words);
+    write_tuples_to_file(&pairs_of_homophones);
+    write_vec_to_file(singularize(&pairs_of_homophones));
 }
 
-fn make_pairs_of_homophones(input_words: Vec<String>) -> Vec<(String, String)> {
-    let mut lines_to_print = vec![];
+fn singularize(pairs_of_homophones: &[(String, String)]) -> Vec<String> {
+    let mut homophones = vec![];
+    for pair in pairs_of_homophones {
+        homophones.push(pair.0.clone());
+        homophones.push(pair.1.clone());
+    }
+    sort_and_dedup(&mut homophones)
+}
+
+fn make_pairs_of_homophones(input_words: &[String]) -> Vec<(String, String)> {
+    let mut tuples_of_homophones = vec![];
     for word in input_words {
-        if let Some(list_of_homophones) = get_homophones(&word) {
+        if let Some(list_of_homophones) = get_homophones(word) {
             println!("{} {:?}", word, list_of_homophones);
             for homophone in list_of_homophones {
-                lines_to_print.push((word.clone(), homophone));
+                tuples_of_homophones.push((word.clone(), homophone));
             }
         }
     }
-    lines_to_print
+    tuples_of_homophones
 }
 
 fn get_homophones(word: &str) -> Option<Vec<String>> {
@@ -40,7 +56,6 @@ fn get_homophones(word: &str) -> Option<Vec<String>> {
             reqwest::blocking::get(&url).expect("Waited to scrape again, but still failed")
         }
     };
-    // assert!(resp.status().is_success());
     if !resp.status().is_success() {
         return None;
     }
@@ -55,7 +70,7 @@ fn get_homophones(word: &str) -> Option<Vec<String>> {
         homophones.push(element.inner_html().trim().to_string());
     }
     if homophones.is_empty() {
-        return None;
+        None
     } else {
         Some(homophones)
     }
@@ -90,8 +105,19 @@ pub fn make_vec_from_filenames(filenames: &[PathBuf]) -> Vec<String> {
     word_list
 }
 
-fn write_tuples_to_file(vec: Vec<(String, String)>) {
-    let output = "homophones.txt";
+/// Alphabetizes and de-duplicates a Vector of `String`s.
+///
+/// For Rust's [`dedup()`](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.dedup)
+/// function to remove all duplicates, the Vector needs to be
+/// [`sort()`](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort)ed first.
+fn sort_and_dedup(list: &mut Vec<String>) -> Vec<String> {
+    list.sort();
+    list.dedup();
+    list.to_vec()
+}
+
+fn write_tuples_to_file(vec: &[(String, String)]) {
+    let output = "homophone_pairs.txt";
     let mut f = File::create(output).expect("Unable to create file");
     for tuple in vec {
         println!("Writing {} and {} to file", tuple.0, tuple.1);
@@ -99,7 +125,7 @@ fn write_tuples_to_file(vec: Vec<(String, String)>) {
     }
 }
 
-fn _write_vec_to_file(vec: Vec<String>) {
+fn write_vec_to_file(vec: Vec<String>) {
     let output = "homophones.txt";
     let mut f = File::create(output).expect("Unable to create file");
     for string in vec {
