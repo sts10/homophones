@@ -61,10 +61,9 @@ ARGS:
 OPTIONS:
     -f, --force                       Force overwrite of output file if it exists
     -h, --help                        Print help information
-    -p, --pairs <PAIRS_OUTPUT>        Path for outputted file for list of PAIRS of homohpones
-    -s, --singles <SINGLES_OUTPUT>    Path for outputted file for list of SINGLE homohpones
+    -p, --pairs <PAIRS_OUTPUT>        Path for outputted file for list of PAIRS of homophones
+    -s, --singles <SINGLES_OUTPUT>    Path for outputted file for list of SINGLE homophones
     -V, --version                     Print version information
-
 ```
 
 ### Examples

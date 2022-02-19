@@ -12,11 +12,11 @@ use std::{thread, time};
 #[derive(Parser, Debug)]
 #[clap(version, about, name = "homophones")]
 struct Args {
-    /// Path for outputted file for list of PAIRS of homohpones.
+    /// Path for outputted file for list of PAIRS of homophones.
     #[clap(short = 'p', long = "pairs", parse(from_os_str))]
     pairs_output: Option<PathBuf>,
 
-    /// Path for outputted file for list of SINGLE homohpones.
+    /// Path for outputted file for list of SINGLE homophones.
     #[clap(short = 's', long = "singles", parse(from_os_str))]
     singles_output: Option<PathBuf>,
 
