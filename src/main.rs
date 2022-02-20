@@ -20,12 +20,12 @@ struct Args {
     #[clap(short = 's', long = "singles", parse(from_os_str))]
     singles_output: Option<PathBuf>,
 
-    /// Force overwrite of output file if it exists.
+    /// Force overwrite of output file(s), if it exists.
     #[clap(short = 'f', long = "force")]
     force_overwrite: bool,
 
-    /// Word list input files. Can be more than one.
-    #[clap(name = "Inputted Word Lists", parse(from_os_str), required = true)]
+    /// Word list input files. Can provide more than one (they'll be combined).
+    #[clap(name = "Inputted word lists", parse(from_os_str), required = true)]
     inputted_word_lists: Vec<PathBuf>,
 }
 
