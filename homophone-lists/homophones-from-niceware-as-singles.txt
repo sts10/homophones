@@ -236,7 +236,6 @@ Marshall
 Marske
 Martin
 Mary
-Mary–marry–merry merger
 Matt
 Maud
 McCobb
@@ -1727,10 +1726,7 @@ corse
 cosign
 cosine
 cot
-cot-caught
-cot-caught merger
 cote
-cot–caught merger
 cou
 coud
 couds
@@ -1819,8 +1815,6 @@ curative
 curatives
 curb
 curd
-cure-force merger
-cure–force merger
 currant
 current
 currier
@@ -2029,10 +2023,8 @@ dots
 dotter
 dou
 dough
-dough-door merger
 doughnut
 doughs
-dough–door merger
 dour
 doux
 dower
@@ -2267,8 +2259,6 @@ fastest
 fat
 fatal
 father
-father-bother merger
-father-bother mergers
 faugh
 faun
 fauna
@@ -2305,7 +2295,7 @@ ferais
 ferait
 feral
 ferment
-fern-fir-fur merger
+fern
 ferons
 feront
 ferrule
@@ -2960,9 +2950,7 @@ horizontale
 horizontales
 horror
 horse
-horse-hoarse merger
 horsed
-horse–hoarse merger
 horst
 horta
 hose
@@ -4298,7 +4286,6 @@ pilhar
 pilot
 pilę
 pin
-pin-pen merger
 pincher
 pinna
 pinned
@@ -6052,7 +6039,6 @@ wily
 win
 wind
 wine
-wine-whine merger
 wined
 winne
 winner
