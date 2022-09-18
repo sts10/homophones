@@ -98,7 +98,12 @@ fn make_pairs_of_homophones(input_words: &[String]) -> Vec<(String, String)> {
     for word in input_words {
         if let Some(list_of_homophones) = get_homophones(word) {
             for homophone in list_of_homophones {
-                tuples_of_homophones.push((word.clone(), homophone));
+                // If difference is just a result of capitalization, we're not going
+                // to count it as a homophone pair.
+                // TO DO: make this over-ridable via a command-line parameter.
+                if word.to_lowercase() != homophone.to_lowercase() {
+                    tuples_of_homophones.push((word.clone(), homophone));
+                }
             }
         }
     }
