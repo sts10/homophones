@@ -2571,16 +2571,10 @@ knell,Nell
 knew,new
 knight,night
 knight,nite
-knightly,nightly
 knit,nit
 knob,nob
 knobby,Nobby
-knot,not
 knot,naught
-knot,caught
-knot,cot
-knotty,naughty
-know,no
 know,noh
 known,none
 known,noone
