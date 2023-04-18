@@ -13,11 +13,11 @@ use std::{thread, time};
 #[clap(version, about, name = "homophones")]
 struct Args {
     /// Path for outputted file for list of PAIRS of homophones.
-    #[clap(short = 'p', long = "pairs", parse(from_os_str))]
+    #[clap(short = 'p', long = "pairs")]
     pairs_output: Option<PathBuf>,
 
     /// Path for outputted file for list of SINGLE homophones.
-    #[clap(short = 's', long = "singles", parse(from_os_str))]
+    #[clap(short = 's', long = "singles")]
     singles_output: Option<PathBuf>,
 
     /// Force overwrite of output file(s), if it exists.
@@ -25,7 +25,7 @@ struct Args {
     force_overwrite: bool,
 
     /// Word list input files. Can provide more than one (they'll be combined).
-    #[clap(name = "Inputted word lists", parse(from_os_str), required = true)]
+    #[clap(name = "Inputted word lists", required = true)]
     inputted_word_lists: Vec<PathBuf>,
 }
 
