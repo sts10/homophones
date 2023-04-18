@@ -2,8 +2,7 @@
 name = "homophones"
 version = "0.1.21"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "BlueOak-1.0.0"
 
 [dependencies]
 reqwest = { version = "0.10", features = ["blocking", "json"] }
