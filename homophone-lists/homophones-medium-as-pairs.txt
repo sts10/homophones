@@ -609,7 +609,7 @@ knights,nights
 knocks,Knox
 knots,nots
 knots,naughts
-knots,cot-caught merger
+knots,cot
 known,none
 known,noone
 knows,noes
